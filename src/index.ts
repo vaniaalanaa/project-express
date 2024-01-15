@@ -4,7 +4,7 @@
 
 /**memanggil library express dulu */
 import express, { Request, Response } from "express"
-import { validateCube } from "./middlewere/validateCube"
+import { validateBalok } from "./middlewere/validateBalok"
 import routeBangunDatar from "./route/bangunDatar"
 import routeBangunRuang from "./route/bangunRuang"
 
@@ -76,7 +76,7 @@ return response.status(200).json(message)
  */
 
 /** create request for count volume of long cube */
-app.post(`/balok`, validateCube,
+app.post(`/balok`, validateBalok,
  (request: Request, response: Response) => {
    /** read panjang, lebar, tinggi */
    let panjang: number = Number(request.body.panjang)
@@ -91,6 +91,7 @@ app.post(`/balok`, validateCube,
 
 /** register route of bangun datar */
 app.use(routeBangunDatar)
+app.use(routeBangunRuang)
 
 
 

@@ -47,12 +47,12 @@ const LuasPermukaanTabung = (request: Request, response: Response) => {
 const VolumeKubus = (request: Request, response: Response) => {
     try {
       const phi = Math.PI
-      const r: number = Number(request.body.p)
-      const volume = r * r * r
+      const s: number = Number(request.body.s)
+      const volume = s * s * s
         return response.status(200)
         .json({
             status: true,
-            r,
+            s,
             volume,
         })
     } catch (error){

@@ -1,5 +1,9 @@
 import express from "express"
-import { KelilingLingkaran, luasLingkaran } from "../controller/bangunDatar"
+import { KelilingLingkaran, KelilingPersegi, KelilingPersegiPanjang, LuasPersegiPanjang, LuasSegitiga, luasLingkaran, luasPersegi } from "../controller/bangunDatar"
+import { validateLingkaran } from "../middlewere/validateLingkaran"
+import { validatePersegi } from "../middlewere/validatePersegi"
+import { validatePersegiPanjang } from "../middlewere/validatePersegiPanjang"
+import { validateSegitiga } from "../middlewere/validateSegitiga"
 const app = express()
 
 /** allow read a body */
@@ -10,7 +14,13 @@ app.use(express.json())
  * 
  */
 
-app.post(`/lingkaran/luas`, luasLingkaran)
-app.post(`/lingkaran/keliling`, KelilingLingkaran)
+app.post(`/lingkaran/luas`,validateLingkaran, luasLingkaran)
+app.post(`/lingkaran/keliling`, validateLingkaran,KelilingLingkaran)
+app.post(`/persegi/luas`,validatePersegi, luasPersegi)
+app.post(`/persegi/keliling`, validatePersegi, KelilingPersegi)
+app.post(`/persegi panjang/luas`,validatePersegiPanjang, LuasPersegiPanjang)
+app.post(`/persegi panjang/keliling`, validatePersegiPanjang, KelilingPersegiPanjang)
+app.post(`/segitiga/luas`,validateSegitiga, LuasSegitiga)
+
 
 export default app
